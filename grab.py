@@ -1,3 +1,17 @@
+"""
+TODO:
+1. Convoy: Szechuan
+  - restaurant
+  - restaurant
+  - restaurant
+  - ... x 10
+2. Convoy: Dim Sum
+  - restaurant
+  - restaurant
+  - restaurant
+  - ... x 10
+"""
+
 import io
 import os
 import json
@@ -19,23 +33,65 @@ client = Client(auth)
 params = {
   "term": "Restaurants",
   "sort": 2,
-  "category_filter": "chinese",
+  "limit": 10,
+  "category_filter": "szechuan"
   #"location": "Convoy Street, San Diego, CA 92111"
 }
 
 params_2 = {
   "term": "Restaurants",
   "sort": 2,
-  "offset": 20,
-  "limit": 20,
-  "category_filter": "chinese",
+  "limit": 10,
+  "category_filter": "cantonese"
   #"location": "Convoy Street, San Diego, CA 92111"
 }
 
+params_3 = {
+  "term": "Restaurants",
+  "sort": 2,
+  "limit": 10,
+  "category_filter": "dimsum"
+  #"location": "Convoy Street, San Diego, CA 92111"
+}
 
-response = client.search("Convoy Street, San Diego, CA 92111", **params)
+params_4 = {
+  "term": "Restaurants",
+  "sort": 2,
+  "limit": 10,
+  "category_filter": "taiwanese"
+  #"location": "Convoy Street, San Diego, CA 92111"
+}
+
+params_5 = {
+  "term": "Restaurants",
+  "sort": 2,
+  "limit": 10,
+  "category_filter": "korean"
+  #"location": "Convoy Street, San Diego, CA 92111"
+}
+
+params_6 = {
+  "term": "Restaurants",
+  "sort": 2,
+  "limit": 10,
+  "category_filter": "japanese"
+  #"location": "Convoy Street, San Diego, CA 92111"
+}
+
+params_7 = {
+  "term": "Restaurants",
+  "sort": 2,
+  "limit": 10,
+  "category_filter": "chinese"
+  #"location": "Convoy Street, San Diego, CA 92111"
+}
+
+response = client.search("Convoy Street, San Diego, CA 92111", **params_7)
 response_2 = client.search("Convoy Street, San Diego, CA 92111", **params_2)
+for i in range(0, len(response.businesses)):
+  print(response.businesses[i].name)
 
+"""
 with open(output, 'w') as out:
   out.write('[')
   convoy = dict()
@@ -80,3 +136,4 @@ with open(output, 'w') as out:
     out.write('\n')
   
   out.write(']')
+  """
